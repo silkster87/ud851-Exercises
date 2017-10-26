@@ -16,15 +16,16 @@
 -->
 
 <!--TODO (1) Change the ConstraintLayout to a LinearLayout DONE-->
-<!--TODO (2) Make the orientation vertical-->
-<!--TODO (3) Give left, right, and top padding of 16dp-->
-<!--TODO (4) Remove the line that declares the id, we don't need it-->
-<!--TODO (5) Remove the xmlns:app declaration, we don't need that anymore-->
+<!--TODO (2) Make the orientation vertical DONE-->
+<!--TODO (3) Give left, right, and top padding of 16dp DONE-->
+<!--TODO (4) Remove the line that declares the id, we don't need it DONE-->
+<!--TODO (5) Remove the xmlns:app declaration, we don't need that anymore DONE-->
 <LinearLayout>
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:id="@+id/activity_main"
+    android:padding_left="16dp"
+    android:padding_right="16dp"
+    android:padding_top="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
