@@ -37,7 +37,7 @@
     android:textSize="22sp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Type here for query and click search"
+    android:hint="Type here for query and click search"
   </EditText>
     <!--TODO (8) Give the EditText an id of @+id/et_search_box DONE-->
     <!--TODO (9) Set the text size to 22sp DONE-->
@@ -54,8 +54,7 @@
     android:text="Search URL will be here after clicking search"
   </TextView>
     <!--TODO (13) Give the TextView an id of @+id/tv_url_display DONE-->
-    <!--TODO (14) Set the text size to 22sp DONE-->
-    <!--TODO (15) Set the width to wrap_content and the height to wrap_content DONE-->
+    <!--TODO (14) Set the text size to 22sp DONE-->    <!--TODO (15) Set the width to wrap_content and the height to wrap_content DONE-->
     <!--TODO (16) Give the TextView a top margin of 8dp DONE-->
     <!--TODO (17) Set the text to tell the user their search URL will show up here when they click search DONE-->
 
