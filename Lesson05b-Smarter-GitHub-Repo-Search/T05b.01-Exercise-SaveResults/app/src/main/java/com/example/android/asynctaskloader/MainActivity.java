@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2016 The Android Open Source Project
  *
@@ -33,9 +34,10 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     // TODO (1) Create a static final key to store the query's URL
-
+    private static final String QUERY_URL_KEY = "QUERY_URL_KEY";
     // TODO (2) Create a static final key to store the search's raw JSON
-
+    private static final String RAW_JSON_KEY = "RAW_JSON_KEY";
+    
     private EditText mSearchBoxEditText;
 
     private TextView mUrlDisplayTextView;
@@ -90,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method will make the error message visible and hide the JSON
+
+* This method will make the error message visible and hide the JSON
      * View.
      * <p>
      * Since it is okay to redundantly set the visibility of a View, we don't
