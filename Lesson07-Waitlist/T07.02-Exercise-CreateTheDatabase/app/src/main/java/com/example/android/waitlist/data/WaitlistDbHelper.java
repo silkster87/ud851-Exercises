@@ -27,13 +27,17 @@ public class WaitlistDbHelper extends SQLiteOpenHelper{
             WaitlistEntry.COLUMN_PARTY_SIZE + "INTEGER NOT NULL, " + 
             WaitlistEntry.COLUMN_TIMESTAMP + "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
             + " );";
-    }
         
-
-        // TODO (7) Execute the query by calling execSQL on sqLiteDatabase and pass the string query SQL_CREATE_WAITLIST_TABLE
-
+    // TODO (7) Execute the query by calling execSQL on sqLiteDatabase and pass the string query SQL_CREATE_WAITLIST_TABLE
+        sqLiteDatabase.execSQL(SQL_CREATE_WAITLIST_TABLE);
+    }
+              
     // TODO (8) Override the onUpgrade method
-
-        // TODO (9) Inside, execute a drop table query, and then call onCreate to re-create it
-
+    
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1){
+    // TODO (9) Inside, execute a drop table query, and then call onCreate to re-create it
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + WaitlistEntry.TABLE_NAME);
+        onCreate(sqLiteDatabase);
+    }
 }
