@@ -48,4 +48,14 @@
 
     <!-- Value in SharedPreferences for green color option -->
     <string name="pref_color_green_value" translatable="false">green</string>
+
+
+    <!-- Default value in EditTextPreference -->
+    <string name="pref_edit_def_value" translatable="false">1</string>
+
+    <!-- Edit text preference key -->
+    <string name="pref_edit_text_key" translatable="false">edit_text</string>
+
+    <!-- Edit text preference title -->
+    <string name="pref_edit_title" translatable="false">Size Multiplier</string>
 </resources>

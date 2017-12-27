@@ -1,10 +1,16 @@
 package com.example.android.waitlist;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import com.example.android.waitlist.data.TestUtil;
+import com.example.android.waitlist.data.WaitlistContract;
+import com.example.android.waitlist.data.WaitlistDbHelper;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         waitlistRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Create an adapter for that cursor to display the data
-        mAdapter = new GuestListAdapter(this);
+
 
         // TODO (2) Create a WaitlistDbHelper instance, pass "this" to the constructor as context
         WaitlistDbHelper dbHelper = new WaitlistDbHelper(this);
@@ -43,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = getAllGuests();
         
         // TODO (12) Pass the resulting cursor count to the adapter
+        mAdapter = new GuestListAdapter(this, cursor.getCount());
 
         // Link the adapter to the RecyclerView
         waitlistRecyclerView.setAdapter(mAdapter);
