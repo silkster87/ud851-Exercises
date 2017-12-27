@@ -23,7 +23,7 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.Gues
     public GuestListAdapter(Context context, int count) {
         this.mContext = context;
         // TODO (10) Set the local mCount to be equal to count
-        mCount = count;
+        this.mCount = count;
     }
 
     @Override
