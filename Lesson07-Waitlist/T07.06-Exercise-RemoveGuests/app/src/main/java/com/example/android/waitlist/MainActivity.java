@@ -1,7 +1,8 @@
 package com.example.android.waitlist;
 
 import android.content.ContentValues;
-import android.database.Cursor;import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -67,11 +68,14 @@ public class MainActivity extends AppCompatActivity {
         // TODO (5) Override onSwiped
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir){
         // TODO (8) Inside, get the viewHolder's itemView's tag and store in a long variable id
+                long id = (long) viewHolder.itemView.getTag(); 
+                    
         // TODO (9) call removeGuest and pass through that id
+                removeGuest(id);                    
         // TODO (10) call swapCursor on mAdapter passing in getAllGuests() as the argument
-            }
+                mAdapter.swapCursor(getAllGuests());            
         //TODO (11) attach the ItemTouchHelper to the waitlistRecyclerView
-            }
+            }.attachToRecyclerView(wailtlistRecyclerView);
     }
 
     /**
