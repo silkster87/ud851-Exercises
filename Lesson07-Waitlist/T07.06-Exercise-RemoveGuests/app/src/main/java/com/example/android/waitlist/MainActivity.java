@@ -1,8 +1,7 @@
 package com.example.android.waitlist;
 
 import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,10 +14,9 @@ import android.widget.EditText;
 import com.example.android.waitlist.data.WaitlistContract;
 import com.example.android.waitlist.data.WaitlistDbHelper;
 
-
 public class MainActivity extends AppCompatActivity {
 
-    private GuestListAdapter mAdapter;
+        private GuestListAdapter mAdapter;
     private SQLiteDatabase mDb;
     private EditText mNewGuestNameEditText;
     private EditText mNewPartySizeEditText;
@@ -28,17 +26,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+    
         RecyclerView waitlistRecyclerView;
 
+        
         // Set local attributes to corresponding views
         waitlistRecyclerView = (RecyclerView) this.findViewById(R.id.all_guests_list_view);
-        mNewGuestNameEditText = (EditText) this.findViewById(R.id.person_name_edit_text);
+         mNewGuestNameEditText = (EditText) this.findViewById(R.id.person_name_edit_text);
         mNewPartySizeEditText = (EditText) this.findViewById(R.id.party_count_edit_text);
 
         // Set layout for the RecyclerView, because it's a list we are using the linear layout
-        waitlistRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+         waitlistRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        
 
         // Create a DB helper (this will create the DB if run for the first time)
         WaitlistDbHelper dbHelper = new WaitlistDbHelper(this);
@@ -51,24 +51,27 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = getAllGuests();
 
         // Create an adapter for that cursor to display the data
-        mAdapter = new GuestListAdapter(this, cursor);
+            mAdapter = new GuestListAdapter(this, cursor);
 
         // Link the adapter to the RecyclerView
         waitlistRecyclerView.setAdapter(mAdapter);
 
 
         //TODO (3) Create a new ItemTouchHelper with a SimpleCallback that handles both LEFT and RIGHT swipe directions
-
+            new ItemTouchHelper( new ItemTouchHelper.SimpleCallback(0,
+                     ItemTouchHelper.LEFT | ItemTouchHelper.Right) {
         // TODO (4) Override onMove and simply return false inside
-
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder, viewHolder){
+                return false;
+            }
         // TODO (5) Override onSwiped
-
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir){
         // TODO (8) Inside, get the viewHolder's itemView's tag and store in a long variable id
         // TODO (9) call removeGuest and pass through that id
         // TODO (10) call swapCursor on mAdapter passing in getAllGuests() as the argument
-
+            }
         //TODO (11) attach the ItemTouchHelper to the waitlistRecyclerView
-
+            }
     }
 
     /**
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 mNewPartySizeEditText.getText().length() == 0) {
             return;
         }
-        //default party size to 1
+            //default party size to 1
         int partySize = 1;
         try {
             //mNewPartyCountEditText inputType="number", so this should always work
@@ -89,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (NumberFormatException ex) {
             Log.e(LOG_TAG, "Failed to parse party size text to number: " + ex.getMessage());
         }
+
 
         // Add guest info to mDb
         addNewGuest(mNewGuestNameEditText.getText().toString(), partySize);
@@ -137,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     // TODO (1) Create a new function called removeGuest that takes long id as input and returns a boolean
-
+    private boolean removeGuest(long id){
     // TODO (2) Inside, call mDb.delete to pass in the TABLE_NAME and the condition that WaitlistEntry._ID equals id
-
-
+    mDb.delete(WaitlistContract.WaitlistEntry.TABLE_NAME, WaitlistContract.WaitlistEntry._ID + "=" + id, null);
+    }
 }
